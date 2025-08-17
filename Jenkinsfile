@@ -19,5 +19,12 @@ pipeline {
                 }
             }    
         }
+        stage('vulnerability_scan') {
+            steps {
+                sh '''
+                trivy image --severity HIGH,CRITICAL --exit-code 1  python:latest
+                '''
+            }
+        }        
     }
 }    
