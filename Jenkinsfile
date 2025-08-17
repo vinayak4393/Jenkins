@@ -5,13 +5,14 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                script{
-                    gitCheckout(config)
-                    def Config [
-                        url: https://github.com/vinayak4393/Jenkins.git
-                        branch: 'main'
-                        credentialsId:  github_token
+                script {
+                    
+                    def config = [
+                        url:'https://github.com/vinayak4393/Jenkins.git',
+                        branch: 'main',
+                        credentialsId:  'github_token'
                     ]
+                    gitCheckout(config)
                     sh '''
                     pwd && ls -lrt
                     '''
